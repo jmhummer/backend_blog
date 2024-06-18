@@ -1,0 +1,17 @@
+{
+  "name": "web-blog",
+  "version": "1.0.0",
+  "description": "Simple web blog application that allows posting blogs, no database involved so all posts are temporary.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Joe Hummer",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.10",
+    "express.js": "^1.0.0"
+  }
+}

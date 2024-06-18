@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Editor</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <script>
+        function validateForm() {
+            const title = document.forms["blogForm"]["title"].value;
+            const blog = document.forms["blogForm"]["blog"].value;
+            if (title == "" || blog == "") {
+                alert("Title and content must both be filled out.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<%- include("header.ejs") %>
+<body>
+    <h2>Edit your blog and click submit to return to the home page.</h2>
+    <form name="blogForm" action="/posts" method="POST" onsubmit="return validateForm()">
+        <input title="title" name="title" type="text" class="input" placeholder="Title" value="<%= formData.title %>" /><br>
+        <textarea name="blog" class="input" placeholder="Blog"><%= formData.blog %></textarea><br>
+        <input type="hidden" name="action" value="save">
+        <input type="hidden" name="id" value="<%= formData.id %>">
+        <input type="submit" value="SUBMIT" />
+    </form>
+</body>
+</html>

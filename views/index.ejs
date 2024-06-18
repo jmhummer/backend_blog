@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joe's Blog</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <script>
+        function validateForm() {
+            const title = document.forms["blogForm"]["title"].value;
+            const blog = document.forms["blogForm"]["blog"].value;
+            if (title == "" || blog == "") {
+                alert("Title and content must both be filled out.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<%- include("header.ejs") %>
+<body>
+    <h1>Posts</h1>
+
+    <div class="post">
+        <% if (locals.posts && posts.length > 0) { %>
+            <% posts.forEach(post => { %>
+                <h5><%= (post.date.getMonth() + 1) %>/<%= post.date.getDate() %>/<%= post.date.getFullYear() %></h5>
+                <h3><%= post.title %></h3>
+                <p><%= post.blog %></p>
+                <form action="/posts" method="POST" style="display:inline;">
+                    <input type="hidden" name="action" value="delete">
+                    <input type="hidden" name="id" value="<%= post.id %>">
+                    <button type="submit">Delete</button>
+                </form>
+                <form action="/posts" method="POST" style="display:inline;">
+                    <input type="hidden" name="action" value="edit">
+                    <input type="hidden" name="id" value="<%= post.id %>">
+                    <button type="submit">Edit</button>
+                </form>
+        <% }) %>
+        <% } else { %>
+            <h2>Posts you made can be seen here, better get to writing!</h2>
+            <img src="/images/empty_cat.jpg" alt="Empty cat meme">
+        <% } %>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joe's Blog</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <script>
+        function validateForm() {
+            const title = document.forms["blogForm"]["title"].value;
+            const blog = document.forms["blogForm"]["blog"].value;
+            if (title == "" || blog == "") {
+                alert("Title and content must both be filled out.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<%- include("header.ejs") %>
+<body>
+    <h1>Welcome!</h1>
+    <h2>Enter a title and some content to create a blog post</h2>
+    <div class="write">
+        <form name="blogForm" action="/posts" method="POST" onsubmit="return validateForm()">
+            <input title="title" name="title" type="text" class="input" placeholder="Title" /><br>
+            <textarea name="blog" class="input" placeholder="Blog"></textarea><br>
+            <input type="hidden" name="action" value="submit">
+            <input type="submit" value="SUBMIT" />
+        </form>
+    </div>
+</body>
+</html>
