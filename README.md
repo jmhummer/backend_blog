@@ -1,4 +1,6 @@
-# blog_backend
+![Photo of the blog dashboard](public/images/dashboard.png)
+
+# backend_blog
 This is a demo project that I created to practice my Node.js, Express, and EJS skills. It only runs locally at the moment so you will need to download all files and run the index.js file using Node.js. The file runs on port 3000 by default.
 
 ## How to Run:
